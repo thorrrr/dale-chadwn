@@ -154,11 +154,20 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
-    { "[]=",      tile },       /* main tiling mode */
-    { "[M]",      monocle },    /* full screen */
-    { "|C|",      centeredmaster }, /* good for ultrawide */
-    { "[@]",      spiral },     /* fibonacci */
-    { "><>",      NULL },       /* floating */
+    { "[]=",      tile },    /* first entry is default */
+    { "[M]",      monocle },
+    { "[@]",      spiral },
+    { "[\\]",     dwindle },
+    { "H[]",      deck },
+    { "TTT",      bstack },
+    { "===",      bstackhoriz },
+    { "HHH",      grid },
+    { "###",      nrowgrid },
+    { "---",      horizgrid },
+    { ":::",      gaplessgrid },
+    { "|M|",      centeredmaster },
+    { ">M>",      centeredfloatingmaster },
+    { "><>",      NULL },    /* no layout function means floating behavior */
     { NULL,       NULL },
 };
 
@@ -195,7 +204,7 @@ static const Key keys[] = {
     //{ MODKEY,                           XK_Return,  spawn,            SHCMD("st")},
 
     // toggle stuff
-    { MODKEY,                           XK_b,       togglebar,      {0} },
+    { MODKEY,                           XK_w,       togglebar,      {0} },
     { MODKEY|ControlMask,               XK_t,       togglegaps,     {0} },
     { MODKEY|ShiftMask,                 XK_space,   togglefloating, {0} },
     { MODKEY,                           XK_f,       togglefullscr,  {0} },
